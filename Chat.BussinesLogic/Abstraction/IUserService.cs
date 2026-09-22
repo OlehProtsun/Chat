@@ -10,6 +10,6 @@ namespace Chat.BussinesLogic.Abstraction
     {
         Task CreateAsync(CreateUserRequest createUserRequest, CancellationToken cancellationToken = default);
         Task UpdateAsync(UpdateUserRequest updateUserRequest, CancellationToken cancellationToken = default);
-        Task<List<UserEntity>> GetAllAsync(CancellationToken cancellationToken = default);
+        Task<List<UserResponse>> GetAllAsync(CancellationToken cancellationToken = default);
     }
 }

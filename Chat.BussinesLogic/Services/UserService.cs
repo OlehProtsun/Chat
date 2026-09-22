@@ -25,9 +25,28 @@ namespace Chat.BussinesLogic.Services
             await unitOfWork.SaveChangesAsync(cancellationToken);
         }
 
-        public Task<List<UserEntity>> GetAllAsync(CancellationToken cancellationToken = default)
+        public async Task<List<UserResponse>> GetAllAsync(CancellationToken cancellationToken = default)
         {
-            return userRepository.GetAllAsync(cancellationToken);
+           var users = await userRepository.GetAllAsync(cancellationToken);
+           //var response = new List<UserResponse>();
+           //foreach(var u in users)
+           //{
+           //     response.Add(new UserResponse
+           //     {
+           //         Id = u.Id,
+           //         Name = u.Name,
+           //         Password = u.PasswordHash,
+           //     });
+           //}
+           // return response;
+
+            return users
+                .Select(u => new UserResponse
+                    {
+                        Id = u.Id,
+                        Name = u.Name,
+                        Password = u.PasswordHash,
+                    }).ToList();
         }
 
         public Task UpdateAsync(UpdateUserRequest updateUserRequest, CancellationToken cancellationToken = default)
