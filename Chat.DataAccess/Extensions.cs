@@ -1,4 +1,5 @@
-﻿using Chat.DataAccess.ORM.EntityFramework;
+﻿using Chat.DataAccess.Abstractions.Repository;
+using Chat.DataAccess.ORM.EntityFramework;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -24,6 +25,8 @@ namespace Chat.DataAccess
 
                 options.UseSqlServer(databaseOptions.ConnectionString);
             });
+
+            serviceCollection.AddTransient<IUserRepository, IUserRepository>();
         }           
     }
 }
