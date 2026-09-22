@@ -1,5 +1,5 @@
 <Solution>
   <Project Path="Chat.Api/Chat.Api.csproj" />
   <Project Path="Chat.BussinesLogic/Chat.BussinesLogic.csproj" />
-  <Project Path="Chat/Chat.DataAccess.csproj" />
+  <Project Path="Chat.DataAccess/Chat.DataAccess.csproj" />
 </Solution>
