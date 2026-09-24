@@ -22,5 +22,11 @@ namespace Chat.Api.Controllers
             return await userService.GetAllAsync(cancellationToken);
         }
 
+        [HttpGet("test-exception")]
+        public IActionResult TestException()
+        {
+            throw new Exception("TEST EXCEPTION FROM CONTROLLER");
+        }
+
     }
 }

@@ -1,5 +1,6 @@
 using Chat.BussinesLogic;
 using Chat.DataAccess;
+using Chat.Api.Middleware;
 
 namespace Chat.Api
 {
@@ -19,6 +20,8 @@ namespace Chat.Api
 
             var app = builder.Build();
 
+            app.UseMiddleware<ExeptionHandlerMiddleware>();
+
             if (app.Environment.IsDevelopment())
             {
                 app.UseSwagger();
@@ -26,6 +29,7 @@ namespace Chat.Api
             }
 
             app.UseHttpsRedirection();
+
 
             app.MapControllers();
 
