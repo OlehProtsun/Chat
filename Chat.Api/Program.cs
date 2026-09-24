@@ -1,3 +1,4 @@
+using Chat.BussinesLogic;
 using Chat.DataAccess;
 
 namespace Chat.Api
@@ -9,9 +10,12 @@ namespace Chat.Api
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddDataAccess(builder.Configuration);
+            builder.Services.AddBussinesLogic();
 
             builder.Services.AddControllers();
-            builder.Services.AddOpenApi();
+
+            builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSwaggerGen();
 
             var app = builder.Build();
 
@@ -22,9 +26,6 @@ namespace Chat.Api
             }
 
             app.UseHttpsRedirection();
-
-            app.UseRouting();
-
 
             app.MapControllers();
 
