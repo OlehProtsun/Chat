@@ -6,6 +6,8 @@ using Chat.DataAccess.Abstractions.UnitOfWork;
 using Chat.DataAccess.Entity.User;
 using Chat.DataAccess.ORM.EntityFramework;
 using Chat.DataAccess.Repository;
+using Chat.Domain.Entity.Auth;
+using Chat.Domain.Enums.Auth;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Options;
@@ -92,6 +94,12 @@ namespace Chat.BussinesLogic.Services
             //Password Hasing
             var passwordHash = passwordHasher.HashPassword(user, request.Password);
             user.PasswordHash = passwordHash;
+
+            //Roles
+            user.UserRoles.Add(new RolesUsersEntity
+            {
+                RoleId = SystemRoleIds.User
+            });
 
             //Entity Create
             await userRepository.CreateAsync(user, cancellationToken);

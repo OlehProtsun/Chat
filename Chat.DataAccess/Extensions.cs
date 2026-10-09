@@ -2,6 +2,7 @@
 using Chat.DataAccess.Abstractions.UnitOfWork;
 using Chat.DataAccess.ORM.EntityFramework;
 using Chat.DataAccess.Repository;
+using Chat.Domain.Abstractions.Repository;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +30,7 @@ namespace Chat.DataAccess
             });
 
             serviceCollection.AddTransient<IUserRepository, UserRepository>();
+            serviceCollection.AddScoped<IUserRoleRepository, UserRoleRepository>();
             serviceCollection.AddScoped<IUnitOfWork, UnitOfWork>();
         }           
     }

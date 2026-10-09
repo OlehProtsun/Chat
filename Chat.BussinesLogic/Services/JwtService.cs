@@ -1,4 +1,5 @@
 ﻿using Chat.BussinesLogic.DTOs.Account;
+using Chat.BussinesLogic.Enums.Auth;
 using Chat.DataAccess.Entity.User;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
@@ -16,8 +17,8 @@ namespace Chat.BussinesLogic.Services
         {
             var claims = new List<Claim>
             {
-                new Claim("userName", user.Name),
-                new Claim("userId", user.Id.ToString())
+                new Claim(CustomClaimTypes.UserName, user.Name),
+                new Claim(CustomClaimTypes.UserId, user.Id.ToString())
             };
 
             var jwtToken = new JwtSecurityToken(

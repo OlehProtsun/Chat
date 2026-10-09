@@ -1,6 +1,7 @@
 ﻿using Chat.BussinesLogic.Abstraction;
 using Chat.BussinesLogic.DTOs.Account;
 using Chat.BussinesLogic.DTOs.User;
+using Chat.BussinesLogic.Enums.Auth;
 using Chat.DataAccess.Entity.User;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -20,6 +21,7 @@ namespace Chat.Api.Controllers
         }
 
         [HttpGet("getAll")]
+        //[Authorize(Policy = CustomPolicyTypes.AdminOnly)]
         public async Task<List<UserResponse>> GetAll(CancellationToken cancellationToken)
         {            
             return await userService.GetAllAsync(cancellationToken);

@@ -1,12 +1,16 @@
 ﻿using Chat.BussinesLogic.Abstraction;
+using Chat.BussinesLogic.Authorization;
 using Chat.BussinesLogic.DTOs.Account;
+using Chat.BussinesLogic.Enums.Auth;
 using Chat.BussinesLogic.Services;
 using Chat.DataAccess.Abstractions.Repository;
 using Chat.DataAccess.Abstractions.UnitOfWork;
 using Chat.DataAccess.Entity.User;
 using Chat.DataAccess.ORM.EntityFramework;
 using Chat.DataAccess.Repository;
+using Chat.Domain.Enums.Auth;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -52,6 +56,22 @@ namespace Chat.BussinesLogic
                         }
                     };
                 });
+
+            serviceCollection.AddScoped<IAuthorizationHandler, DbRoleAuthorizationHandler>();
+            serviceCollection.AddAuthorization(o =>
+            {
+                o.AddPolicy(CustomPolicyTypes.AdminOnly, policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.AddRequirements(new DbRoleRequirement(SystemRoles.Admin));
+                });
+
+                o.AddPolicy(CustomPolicyTypes.UserOnly, policy =>
+                {
+                    policy.RequireAuthenticatedUser();
+                    policy.AddRequirements(new DbRoleRequirement(SystemRoles.User));
+                });
+            });
 
         }
 
