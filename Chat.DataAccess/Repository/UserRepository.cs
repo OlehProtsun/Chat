@@ -32,6 +32,12 @@ namespace Chat.DataAccess.Repository
                 
         }
 
+        public async Task<UserEntity?> GetByNameAsync(string name, CancellationToken cancellationToken = default)
+        {
+            return await context.User.FirstOrDefaultAsync(u => u.Name == name, cancellationToken);
+
+        }
+
         public void Update(UserEntity model)
         {
             context.User.Update(model);

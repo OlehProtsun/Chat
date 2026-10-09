@@ -11,5 +11,6 @@ namespace Chat.DataAccess.Abstractions.Repository
         void Delete(T model);
         Task<List<T>> GetAllAsync(CancellationToken cancellationToken = default);
         Task<T?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
+        Task<T?> GetByNameAsync(string name, CancellationToken cancellationToken = default);
     }
 }

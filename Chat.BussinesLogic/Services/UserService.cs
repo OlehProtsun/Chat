@@ -1,5 +1,5 @@
 ﻿using Chat.BussinesLogic.Abstraction;
-using Chat.BussinesLogic.DTOs.Request.User;
+using Chat.BussinesLogic.DTOs.User;
 using Chat.DataAccess.Abstractions.Repository;
 using Chat.DataAccess.Abstractions.UnitOfWork;
 using Chat.DataAccess.Entity.User;

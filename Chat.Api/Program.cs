@@ -11,7 +11,8 @@ namespace Chat.Api
             var builder = WebApplication.CreateBuilder(args);
 
             builder.Services.AddDataAccess(builder.Configuration);
-            builder.Services.AddBussinesLogic();
+
+            builder.Services.AddBussinesLogic(builder.Configuration);
 
             builder.Services.AddControllers();
 
@@ -30,7 +31,9 @@ namespace Chat.Api
 
             app.UseHttpsRedirection();
 
-
+            app.UseAuthentication();
+            app.UseAuthorization();
+            
             app.MapControllers();
 
             app.Run();

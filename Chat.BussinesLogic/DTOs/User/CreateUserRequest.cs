@@ -2,15 +2,11 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Chat.BussinesLogic.DTOs.Request.User
+namespace Chat.BussinesLogic.DTOs.User
 {
-    public class UserResponse
+    public class CreateUserRequest
     {
-        public Guid Id { get; set; }
-
         public string Name { get; set; } = null!;
-
         public string Password { get; set; } = null!;
-
     }
 }

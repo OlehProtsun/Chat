@@ -1,4 +1,4 @@
-﻿using Chat.BussinesLogic.DTOs.Request.User;
+﻿using Chat.BussinesLogic.DTOs.User;
 using Chat.DataAccess.Entity.User;
 using System;
 using System.Collections.Generic;

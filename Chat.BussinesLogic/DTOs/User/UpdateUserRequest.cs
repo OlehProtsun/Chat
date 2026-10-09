@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace Chat.BussinesLogic.DTOs.Request.User
+namespace Chat.BussinesLogic.DTOs.User
 {
     public class UpdateUserRequest
     {
